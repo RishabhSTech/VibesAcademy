@@ -1,0 +1,437 @@
+@media screen and (max-width: 1499px) {
+    .container {
+        max-width: 1200px;
+        padding: 0px;
+    }
+    .imageProfile img {
+        width: 220px;
+        height: 220px;
+        max-width: 220px;
+    }
+    .MainBannerHeading {
+        font-size: 73px;
+        line-height: 87px;
+    }
+    .video-container {
+        width: 500px;
+    }
+    header {
+        padding: 30px 0px 48px 0px;
+    }
+    .TesttomnialText {
+    min-height: 80px;
+}
+    .ps-timeline-sec .container {
+        position: relative;
+                width: 930px;
+        margin: 0px auto;
+    }
+    .YoutubeVideos {
+        width: 1000px;
+        height: 572px;
+        margin: 35px auto;
+    }
+}
+
+@media screen and (max-width: 999px) {
+    
+    header nav.mobile-menu .mobile-menu-overlay ul li a {
+ text-align: left;
+    padding-left: 31px;
+}
+header nav.mobile-menu .mobile-menu-overlay ul {
+ 
+    top: 35%;
+ 
+}
+
+.btn-submit {
+
+    padding: 16px 19px;
+    border-radius: 28px;
+    font-size: 14px;
+
+}
+    .ps-timeline-sec {
+    position: relative;
+    width: 100%;
+    margin: 0px auto;
+}
+.formobile{
+    display: block;
+}
+.fordesktop{
+    display: none;
+}
+.item {
+    padding: 0px 10px;
+}
+    .ModalGlassEffect {
+    width: 320px;
+}
+    body {
+        background-size: 340%;
+        background-position: top;
+    }
+    .container {
+        max-width: 90%;
+        padding: 0px 0px;
+    }
+    .YoutubeVideos {
+        width: auto;
+        height: 310px;
+        margin: 12px auto;
+    }
+    .StudentsSay li {
+        flex: 100%;
+    }
+    .StudentsSay {
+        width: 100%;
+    }
+    .TesttomnialText {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .GroupName .NameCustomer {
+        font-size: 17px;
+        margin: 0;
+    }
+    .FirstLatter {
+        font-size: 17px;
+        width: 35px;
+        height: 35px;
+    }
+    .StarsRating img {
+        width: 100px;
+    }
+    .Datetesto {
+        font-size: 13px;
+    }
+    .imageCerticiate {
+        width: 90%;
+        margin: 36px auto;
+    }
+    .BoxMoney {
+        position: relative;
+        width: 90%;
+        margin: 0px auto 50px auto;
+    }
+    img.moneyback2 {
+        width: 150px;
+        margin: -77px auto 0px auto;
+    }
+    .BoxMoney p {
+        padding: 29px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .MoneyBackG {
+        padding: 0px 0px 73px 0px;
+    }
+    .allFaqs li {
+        margin: 20px 0px 20px 0px;
+    }
+    .FAQs {
+        padding: 0px 0px 33px 0px;
+    }
+    .allFaqs {
+        height: auto;
+        width: 98%;
+    }
+    .faqsInner::before {
+        border-radius: 30px;
+    }
+    .allFaqs li .faqsInner {
+        gap: 4px;
+    }
+    .IconFaqs {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex: 1 1 13%;
+        padding: 20px;
+    }
+    .faqsHeading {
+        font-size: 17px;
+    }
+    .FaqsText {
+        flex: 1 1 87%;
+        padding: 20px;
+    }
+    .testoboxx {
+        margin: 15px;
+        padding: 18px;
+    }
+    .ps-timeline-sec .container {
+        position: relative;
+        width: auto;
+        margin: 0px auto;
+    }
+    .CoachProfile {
+        flex-wrap: wrap;
+    }
+    .CouresInfos {
+        flex-wrap: wrap;
+    }
+    .footerrow {
+        flex-wrap: wrap;
+        gap: 28px;
+    }
+    .fcol {
+        flex: 1 1 100%;
+    }
+    .textright {
+        justify-content: flex-start;
+    }
+    .textright1 {
+        text-align: left;
+    }
+    footer {
+        padding: 40px 0px;
+    }
+    .OutlineBtn {
+        display: none;
+    }
+    .row {
+        flex-wrap: wrap;
+    }
+    .MainBannerHeading {
+        font-size: 40px;
+        line-height: 47px;
+        margin-top: 100px;
+    }
+    .MainBannerHeading:after {
+        content: '';
+        position: absolute;
+        top: -123px;
+        right: 69px;
+        display: block;
+        background: url(../images/moneyback.png) no-repeat;
+        width: 121px;
+        height: 152px;
+        background-size: 119px;
+    }
+    .SmallBannerHeading {
+        font-size: 22px;
+        color: #fff;
+        line-height: 31px;
+        font-weight: 300;
+        display: block;
+        margin: 15px 0px 23px 0px;
+    }
+    .logo img {
+        width: 120px;
+    }
+    .ButtonGroup .EnrollNow::after {
+       content: '';
+        position: absolute;
+        top: -31px;
+        right: -110px;
+        display: block;
+        width: 123px;
+        height: 83px;
+        background-size: 127px;
+    }
+    .ButtonGroup .EnrollNow {
+        position: relative;
+        display: inline-block;
+        margin-top: 9px;
+        margin-bottom: 40px;
+    }
+    .EnrollNow {
+      font-size: 21px;
+        padding: 14px 27px;
+    }
+    .video-container {
+        width: auto;
+        height: 300px;
+    }
+    .CouresHighlights {
+               font-size: 16px;
+        line-height: 29px;
+    }
+    .CouresInfo {
+        text-align: center;
+        padding: 55px 0px;
+    }
+    .MainHeading {
+        font-size: 28px;
+        margin-bottom: 16px;
+    }
+    .SmallHeading {
+        font-size: 15px;
+        color: #FFFCFA;
+        line-height: 21px;
+        font-weight: 300;
+        width: 95%;
+        margin: 8px auto 24px auto;
+    }
+    .CouresInfos li {
+        width: 100%;
+        flex-basis: 25%;
+    }
+    .MainHeadingIcons {
+        font-size: 22px;
+        font-weight: 400;
+    }
+    .MiniHeading {
+        font-size: 9px;
+    }
+    .IconCoures-1 {
+        background-size: 27px;
+        background-position: left 16px center;
+    }
+    .IconCoures-2 {
+        background-size: 22px;
+        background-position: left 17px center;
+    }
+    .IconCoures-3 {
+        background-size: 29px;
+        background-position: left 14px center;
+    }
+    .IconCoures-4 {
+        background-size: 30px;
+        background-position: left 12px center;
+    }
+    .CouresInfos li {
+        position: relative;
+        padding: 17px 15px 17px 55px;
+    }
+    .CouresInfos {
+              gap: 9px;
+    }
+    .Community .CouresInfos li {
+        width: 100%;
+        flex-basis: 30%;
+    }
+    .Community .CouresInfos li {
+        padding: 20px 20px 20px 20px;
+    }
+    .Community .MainHeadingIcons {
+        font-size: 18px;
+    }
+    .SuccessStories {
+        padding: 50px 0px 0px 0px;
+        margin-bottom: 37px;
+    }
+    .CourseStructure {
+        padding: 50px 0px;
+    }
+    .GetCertified {
+    text-align: center;
+    padding: 0px 0px 129px 0px;
+}
+    .imageProfile img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+    }
+    .CoachProfile {
+        gap: 0px;
+        margin: 0px 0px 12px 0px;
+    }
+    .CoachProfile li {
+        flex: 50%;
+    }
+    .cardID {
+        padding: 15px;
+    }
+    .coachName {
+        font-size: 17px;
+        margin: 12px 0px 8px 0px;
+    }
+    .coachRole {
+        font-size: 13px;
+    }
+    .coachEdu {
+        font-size: 12px;
+    }
+    .WhatOurStudentSay {
+        padding: 58px 0px;
+    }
+    .ps-timeline-sec .container ol.ps-timeline li .ps-bot {
+        width: 100%;
+        float: left;
+        right: 0;
+        top: 0;
+    }
+    .ps-timeline-sec .container ol.ps-timeline li .ps-top {
+        width: 100%;
+        float: left;
+        right: 0;
+        top: 0;
+    }
+    .ps-timeline-sec .container ol.ps-timeline li .ps-bot p {
+        text-align: left;
+        width: 100%;
+        margin: 0 auto;
+        font-size: 17px;
+        color: #FFFB8A;
+        line-height: 22px;
+        font-weight: 400;
+        position: absolute;
+                top: -13px;
+        left: 20px;
+    }
+    .ps-timeline-sec .container ol.ps-timeline li .ps-top p {
+        text-align: left;
+        width: 100%;
+        font-size: 17px;
+        color: #FFFB8A;
+        line-height: 22px;
+        font-weight: 400;
+        position: absolute;
+        top: -13px;
+        left: 20px;
+    }
+    .ps-timeline-sec .container ol.ps-timeline li .ps-bot {
+        width: 100% !important;
+        float: left !important;
+        right: 0;
+        top: -0px;
+    }
+    .ps-timeline-sec .container ol.ps-timeline li .ps-top {
+        width: 100% !important;
+        float: left !important;
+        right: 0px;
+        top: 0;
+    }
+    .lastlid {
+        position: absolute;
+        right: 0px;
+        font-size: 18px;
+        color: #FFFB8A;
+        line-height: 22px;
+        font-weight: 400;
+        top: auto;
+        bottom: -1px;
+        left: 39px;
+        right: auto;
+        font-weight: 600;
+    }
+}
+
+@media screen and (max-width: 430px) {
+        .MainBannerHeading:after {
+ 
+        top: -127px;
+        right: 143px;
+    
+    }
+}
+@media screen and (max-width: 375px) {
+        .MainBannerHeading:after {
+ 
+      
+        right: 91px;
+    
+    }
+}
+@media screen and (max-width: 360px) {
+        .MainBannerHeading:after {
+ 
+       
+               right: 79px;
+    
+    }
+}
