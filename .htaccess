@@ -2,4 +2,4 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 
-ErrorDocument 404 https://www.thevibes.academy/404.php
+ErrorDocument 404 https://www.vibesacademy.shrijantech.com/404.php

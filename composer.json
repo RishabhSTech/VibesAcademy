@@ -1,6 +1,7 @@
 {
     "require": {
         "geoip2/geoip2": "^2.13",
-        "google/apiclient": "^2.15"
+        "google/apiclient": "^2.15",
+        "razorpay/razorpay": "^2.9"
     }
 }
