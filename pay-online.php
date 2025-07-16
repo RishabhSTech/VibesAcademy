@@ -1,14 +1,18 @@
 <?php
+
+require('vendor/autoload.php');
+
+use Razorpay\Api\Api;
+
 session_start();
 
 if(isset($_POST['payagain'])) {
-    
     $track_form = $_POST['track_form'];
     
     $servername = "localhost";
-    $username = "mba";
-    $password = "mba@123";
-    $dbname = "mba";
+    $username = "u475996608_mba";
+    $password = "Ashi@2605";
+    $dbname = "u475996608_vibesacademy";
     
     $conn = new mysqli($servername, $username, $password, $dbname);
     
@@ -17,7 +21,6 @@ if(isset($_POST['payagain'])) {
     }
     
     $sql = "SELECT * FROM payments WHERE `id` = '".$_POST['payagain']."'";
-    
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0) {
@@ -29,19 +32,10 @@ if(isset($_POST['payagain'])) {
         $transid = $row['id'];
         $duplicate_retry = $row['duplicate_retry'];
         $duplicate_retry = $duplicate_retry+1;
-        
-        
-        
-        
     } else {
-        
-        header('Location:index.php') ;
+        header('Location:index.php');
         exit;
     }
-    
-    //$conn->close();
-    
-    //die();
     
     function get_client_ip() {
         $ipaddress = '';
@@ -63,137 +57,127 @@ if(isset($_POST['payagain'])) {
     }
     
     $client_ip = get_client_ip();
-    
     $ip_address = get_client_ip();
     
     date_default_timezone_set("Asia/Kolkata"); 
     $timestamp = time();
     $TXNdatetime = date('Y-m-d H:i:s', $timestamp);
-    $api_key = "ce94a7dc45301a";
-    $url = "https://ipinfo.io/$ip_address?token=ce94a7dc45301a";
-    $response = file_get_contents($url);
-    $details = json_decode($response, true);
-    $server_data = json_encode($_SERVER);
-    
-    
-    $merchantId = 'VIBESONLINE';
-    $apiKey="0f46e587-b588-466f-86e8-d713c2a99596";
-    
-    $redirectUrl = 'https://www.thevibes.academy/verify.php';
-    
-    //$customerID = uniqid();
     
     $cleanedName = preg_replace('/[^a-zA-Z]/', '', $CustName);
     $firstFiveLetters = substr($cleanedName, 0, 5);
     $customerID = $transid.strtolower($firstFiveLetters).$CustMobile;
     
-   // $txnID =  uniqid();
-    $txnID =  substr(hexdec(uniqid()), -6).'D'.date("Ymd").'T'.time();
-    $PaymentStatus  = '';
+    $txnID = substr(hexdec(uniqid()), -6).'D'.date("Ymd").'T'.time();
+    $PaymentStatus = '';
     $amount = '499';
-    
-    $order_id = $customerID; 
-    $name= $CustName;
-    $email=$CustEmail;
-    $mobile=$CustMobile;
     $CourseID = '7DAYS_COURSE';
+    
     $_SESSION['SucessID'] = $customerID;
     $_SESSION['SucessName'] = $CustName;
     $_SESSION['SucessEmail'] = $CustEmail;
     $_SESSION['transid'] = $transid;
 
-    $description = 'Coures - i-MBA INFLUENCERS ka MBA';
-    
-    $paymentData = array(
-        'merchantId' => $merchantId,
-        'merchantTransactionId' => "$txnID",
-        "merchantUserId"=>"$customerID",
-        'amount' => $amount*100,
-        'redirectUrl'=>$redirectUrl,
-        'redirectMode'=>"POST",
-        'callbackUrl'=>$redirectUrl,
-        "merchantOrderId"=>$order_id,
-        "mobileNumber"=>$mobile,
-        "message"=>$description,
-        "email"=>$email,
-        "shortName"=>$name,
-        "paymentInstrument"=> array(    
-        "type"=> "PAY_PAGE",
-        )
-    );
-    
-    $jsonencode = json_encode($paymentData);
-    $payloadMain = base64_encode($jsonencode);
-    $salt_index = 1;
-    $payload = $payloadMain . "/pg/v1/pay" . $apiKey;
-    $sha256 = hash("sha256", $payload);
-    $final_x_header = $sha256 . '###' . $salt_index;
-    $request = json_encode(array('request'=>$payloadMain));
-    
-    $curl = curl_init();
-    curl_setopt_array($curl, [
-    CURLOPT_URL => "https://api.phonepe.com/apis/hermes/pg/v1/pay",
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 30,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "POST",
-    CURLOPT_POSTFIELDS => $request,
-    CURLOPT_HTTPHEADER => [
-    "Content-Type: application/json",
-    "X-VERIFY: " . $final_x_header,
-    "accept: application/json"
-    ],
-    ]);
-    
-    $response = curl_exec($curl);
-    $err = curl_error($curl);
-    
-    curl_close($curl);
+    // Razorpay API credentials
+    $api_key = "rzp_test_j0AdRTrkd74Mb8";
+    $api_secret = "SBN9J0ZzbZrQDNWQ7iDLhIwL";
+    $redirectUrl = 'https://www.vibesacademy.shrijantech.com/verify.php';
 
-    if ($err) {
-        echo "cURL Error #:" . $err;
-    } else {
-        $res = json_decode($response);
+    try {
+        // Initialize Razorpay API
+        $api = new Api($api_key, $api_secret);
         
-        $sql_res = "UPDATE payments SET CourseID = '".$CourseID."', duplicate_track_form = '".$track_form."', Amount = '".$amount."', response = '".$response."' WHERE id = '".$transid."'";
-    
-        if ($conn->query($sql_res) === TRUE) {
-             
-        } else {
-             
-        }
+        // Create order
+        $orderData = [
+            'receipt'         => $txnID,
+            'amount'          => $amount * 100, // amount in paise
+            'currency'        => 'INR',
+            'payment_capture' => 1 // auto capture
+        ];
         
-        if(isset($res->success) && $res->success=='1'){
-            
-            $payUrl=$res->data->instrumentResponse->redirectInfo->url;
-            
-            date_default_timezone_set("Asia/Kolkata"); 
-            $timestamp = time();
-            $TXNdatetime = date('Y-m-d H:i:s', $timestamp);
-            $sql = "UPDATE payments SET CourseID = '".$CourseID."', duplicate_track_form = '".$track_form."',Amount = '".$amount."',PaymentStatus = '".$res->code."', TXNdatetime = '".$TXNdatetime."', txnID = '".$txnID."', new_txnID = '".$txnID."', customerID = '".$customerID."', response = '".$response."', duplicate_retry = '".$duplicate_retry."' WHERE id = '".$transid."'";
-            
-            if ($conn->query($sql) === TRUE) {
-                    
-            } else {
-                    
-            }
-            
-            
-            
-            header('Location:'.$payUrl) ;
-    
-    
-        }else{
-            header("Location: failed.php");
-        }
-    
+        $razorpayOrder = $api->order->create($orderData);
+        $razorpayOrderId = $razorpayOrder['id'];
+        
+        // Update payment record in database
+        $sql_res = "UPDATE payments SET 
+            CourseID = '".$CourseID."', 
+            duplicate_track_form = '".$track_form."', 
+            Amount = '".$amount."', 
+            response = '".json_encode($razorpayOrder)."',
+            razorpay_order_id = '".$razorpayOrderId."',
+            PaymentStatus = 'created', 
+            TXNdatetime = '".$TXNdatetime."', 
+            txnID = '".$txnID."', 
+            new_txnID = '".$txnID."', 
+            customerID = '".$customerID."', 
+            duplicate_retry = '".$duplicate_retry."' 
+            WHERE id = '".$transid."'";
+        
+        $conn->query($sql_res);
+        
+        // Create checkout data
+        $checkoutData = [
+            "key"               => $api_key,
+            "amount"            => $orderData['amount'],
+            "name"              => "Vibes Academy",
+            "description"       => "Course - i-MBA INFLUENCERS ka MBA",
+            "image"             => "https://example.com/your-logo.png",
+            "prefill"           => [
+                "name"          => $CustName,
+                "email"         => $CustEmail,
+                "contact"       => $CustMobile,
+            ],
+            "notes"             => [
+                "merchant_order_id" => $customerID,
+                "retry_payment"    => "true",
+                "original_txn_id"  => $transid
+            ],
+            "theme"             => [
+                "color"         => "#F37254"
+            ],
+            "order_id"          => $razorpayOrderId,
+        ];
+        
+        $_SESSION['razorpay_order_id'] = $razorpayOrderId;
+        
+        // Output JavaScript to auto-submit the Razorpay checkout form
+        ?>
+        <html>
+        <head>
+            <title>Processing Payment...</title>
+        </head>
+        <body>
+            <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+            <script>
+                var options = <?php echo json_encode($checkoutData); ?>;
+                options.handler = function (response) {
+                    window.location.href = "verify.php?payment_id=" + response.razorpay_payment_id + 
+                                          "&order_id=" + response.razorpay_order_id + 
+                                          "&signature=" + response.razorpay_signature +
+                                          "&retry=true";
+                };
+                options.modal = {
+                    ondismiss: function() {
+                        window.location.href = "failed.php?retry=true";
+                    }
+                };
+                var rzp = new Razorpay(options);
+                rzp.open();
+            </script>
+            <p>Redirecting to payment gateway...</p>
+        </body>
+        </html>
+        <?php
+        
+    } catch (Exception $e) {
+        // Log error
+        error_log("Razorpay Error: " . $e->getMessage());
+        // Update database with error
+        $conn->query("UPDATE payments SET response = '".json_encode(['error' => $e->getMessage()])."' WHERE id = '".$transid."'");
+        // Redirect to error page
+        header("Location: failed.php?error=".urlencode($e->getMessage())."&retry=true");
+        exit();
     }
     
-    
+    $conn->close();
 }
-
-
-          
 ?>

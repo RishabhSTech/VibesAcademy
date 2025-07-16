@@ -1,31 +1,29 @@
 <?php
+
+require('vendor/autoload.php');
+
+use Razorpay\Api\Api;
+
 session_start();
 
-// Capture UTM parameters from URL
 if(!isset($_SESSION['utm_source'])){
-	$utm_source = isset($_GET['utm_source']) ? $_GET['utm_source'] : '';
-	$utm_medium = isset($_GET['utm_medium']) ? $_GET['utm_medium'] : '';
-	$utm_campaign = isset($_GET['utm_campaign']) ? $_GET['utm_campaign'] : '';
-	$utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : '';
-	
-	// Store UTM parameters in session
-	$_SESSION['utm_source'] = $utm_source;
-	$_SESSION['utm_medium'] = $utm_medium;
-	$_SESSION['utm_campaign'] = $utm_campaign;
-	$_SESSION['utm_content'] = $utm_content;
+    $utm_source = isset($_GET['utm_source']) ? $_GET['utm_source'] : '';
+    $utm_medium = isset($_GET['utm_medium']) ? $_GET['utm_medium'] : '';
+    $utm_campaign = isset($_GET['utm_campaign']) ? $_GET['utm_campaign'] : '';
+    $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : '';
+    
+    $_SESSION['utm_source'] = $utm_source;
+    $_SESSION['utm_medium'] = $utm_medium;
+    $_SESSION['utm_campaign'] = $utm_campaign;
+    $_SESSION['utm_content'] = $utm_content;
 }
 
-?>
-
-
-<?php
-//session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-//session_start();
+
 if(isset($_POST['CusName'])) {
-    $con = mysqli_connect("localhost", "mba", "mba@123", "mba");
+    $con = mysqli_connect("localhost", "u475996608_mba", "Ashi@2605", "u475996608_vibesacademy");
     
     if (mysqli_connect_errno()) {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -67,26 +65,20 @@ if(isset($_POST['CusName'])) {
         return $ipaddress;
     }
 
-
     $client_ip = get_client_ip();
     
-    $ip_address = get_client_ip(); // Example IP address
+    $ip_address = get_client_ip();
     
-    // Your ipstack API access key
     $api_key = "ce94a7dc45301a";
     $url = "https://ipinfo.io/$ip_address?token=ce94a7dc45301a";
     $response = file_get_contents($url);
     $details = json_decode($response, true);
     $state_name = $details['region'];
 
-
-    //$customerID = uniqid();
-    
     $cleanedName = preg_replace('/[^a-zA-Z]/', '', $CustName);
     $firstFiveLetters = substr($cleanedName, 0, 5);
     $customerID = strtolower($firstFiveLetters).$CustMobile;
 
-    //$txnID =  uniqid();
     $txnID =  substr(hexdec(uniqid()), -6).'D'.date("Ymd").'T'.time();
     $PaymentStatus  = '';
     $Amount = '499';
@@ -109,7 +101,6 @@ if(isset($_POST['CusName'])) {
     if (mysqli_query($con, $sqlInsert)) {
         $id = mysqli_insert_id($con);
         
-        
         $cleanedName = preg_replace('/[^a-zA-Z]/', '', $CustName);
         $firstFiveLetters = substr($cleanedName, 0, 5);
         $customerID = $id.strtolower($firstFiveLetters).$CustMobile;
@@ -121,117 +112,101 @@ if(isset($_POST['CusName'])) {
              
         }
         
-        // Replace these with your actual PhonePe API credentials
+        $api_key = "rzp_test_j0AdRTrkd74Mb8";
+        $api_secret = "SBN9J0ZzbZrQDNWQ7iDLhIwL";
+        $redirectUrl = 'https://www.vibesacademy.shrijantech.com/verify.php';
         
-        $merchantId = 'VIBESONLINE'; // sandbox or test merchantId
-        $apiKey="0f46e587-b588-466f-86e8-d713c2a99596"; // sandbox or test APIKEY
-        //$redirectUrl = 'https://www.thevibes.academy/thank-you.php';
-        $redirectUrl = 'https://www.thevibes.academy/verify.php';
+        $api = new Api($api_key, $api_secret);
         
+        $orderData = [
+            'receipt'         => $txnID,
+            'amount'          => $Amount * 100,
+            'currency'        => 'INR',
+            'payment_capture' => 1
+        ];
         
-        // Set transaction details
-        $order_id = $customerID; 
-        $name= $CustName;
-        $email=$CustEmail;
-        $mobile=$CustMobile;
-        $amount = $Amount; // amount in INR
-        $description = 'Coures - i-MBA INFLUENCERS ka MBA';
-        
-        
-        $paymentData = array(
-            'merchantId' => $merchantId,
-            'merchantTransactionId' => "$txnID", // test transactionID
-            "merchantUserId"=>"$customerID",
-            'amount' => $amount*100,
-            'redirectUrl'=>$redirectUrl,
-            'redirectMode'=>"POST",
-            'callbackUrl'=>$redirectUrl,
-            "merchantOrderId"=>$order_id,
-            "mobileNumber"=>$mobile,
-            "message"=>$description,
-            "email"=>$email,
-            "shortName"=>$name,
-            "paymentInstrument"=> array(    
-            "type"=> "PAY_PAGE",
-            )
-        );
-        
-        
-        
-        $jsonencode = json_encode($paymentData);
-        $payloadMain = base64_encode($jsonencode);
-        $salt_index = 1; //key index 1
-        $payload = $payloadMain . "/pg/v1/pay" . $apiKey;
-        $sha256 = hash("sha256", $payload);
-        $final_x_header = $sha256 . '###' . $salt_index;
-        $request = json_encode(array('request'=>$payloadMain));
-        
-        //print_r($request);
-                
-        $curl = curl_init();
-        curl_setopt_array($curl, [
-        CURLOPT_URL => "https://api.phonepe.com/apis/hermes/pg/v1/pay",
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => "",
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 30,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => "POST",
-        CURLOPT_POSTFIELDS => $request,
-        CURLOPT_HTTPHEADER => [
-        "Content-Type: application/json",
-        "X-VERIFY: " . $final_x_header,
-        "accept: application/json"
-        ],
-        ]);
-        
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-        
-        curl_close($curl);
-    
-        if ($err) {
-            echo "cURL Error #:" . $err;
-        } else {
+        try {
+            $razorpayOrder = $api->order->create($orderData);
             
-            $sql = "UPDATE payments SET response = '".$response."' WHERE txnID = '".$txnID."'";
-    
-            if ($con->query($sql) === TRUE) {
-                 
-            } else {
-                 
-            }
-            $res = json_decode($response);
+            $razorpayOrderId = $razorpayOrder['id'];
             
-            if(isset($res->success) && $res->success=='1'){
-                $paymentCode=$res->code;
-                $paymentMsg=$res->message;
-                $payUrl=$res->data->instrumentResponse->redirectInfo->url;
-                
-                //session_start();
-                
-                $_SESSION['SucessID'] = $customerID;
-                $_SESSION['SucessName'] = $CustName;
-                $_SESSION['SucessEmail'] = $CustEmail;
-                
-                header('Location:'.$payUrl) ;
-        
-        
-            }else{
-                header("Location: failed.php");
+            $sql = "UPDATE payments SET response = '".json_encode($razorpayOrder)."' WHERE txnID = '".$txnID."'";
+            
+            if ($con->query($sql) === FALSE) {
+                // Handle error if needed
             }
-        
+            
+            $checkoutData = [
+                "key"               => $api_key,
+                "amount"            => $orderData['amount'],
+                "name"              => "Vibes Academy",
+                "description"      => "Course - i-MBA INFLUENCERS ka MBA",
+                "image"             => "",
+                "prefill"           => [
+                    "name"          => $CustName,
+                    "email"         => $CustEmail,
+                    "contact"      => $CustMobile,
+                ],
+                "notes"             => [
+                    "merchant_order_id" => $customerID,
+                ],
+                "theme"             => [
+                    "color"         => "#F37254"
+                ],
+                "order_id"          => $razorpayOrderId,
+            ];
+            
+            $_SESSION['SucessID'] = $customerID;
+            $_SESSION['SucessName'] = $CustName;
+            $_SESSION['SucessEmail'] = $CustEmail;
+            $_SESSION['razorpay_order_id'] = $razorpayOrderId;
+            
+            $jsonCheckoutData = json_encode($checkoutData);
+            
+            echo '<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+            <script>
+                var options = ' . $jsonCheckoutData . ';
+                
+                options.handler = function (response) {
+                    var form = document.createElement("form");
+                    form.method = "POST";
+                    form.action = "verify.php";
+                    
+                    function addInput(name, value) {
+                        var input = document.createElement("input");
+                        input.type = "hidden";
+                        input.name = name;
+                        input.value = value;
+                        form.appendChild(input);
+                    }
+                    
+                    addInput("txnID", "' . $txnID . '");
+                    addInput("razorpay_payment_id", response.razorpay_payment_id);
+                    addInput("razorpay_order_id", response.razorpay_order_id);
+                    addInput("razorpay_signature", response.razorpay_signature);
+                    
+                    document.body.appendChild(form);
+                    form.submit();
+                };
+            
+                options.modal = {
+                    ondismiss: function() {
+                        window.location.href = "failed.php";
+                    }
+                };
+            
+                var rzp = new Razorpay(options);
+                rzp.open();
+            </script>';
+            
+        } catch (Exception $e) {
+            header("Location: failed.php?error=".urlencode($e->getMessage()));
         }
     
-    
-        //echo "New record created successfully. Inserted ID is: " . $id;
     } else {
         echo "Error: " . $sqlInsert . "<br>" . mysqli_error($con);
     }
     
     mysqli_close($con);
 }
-
-
-          
 ?>

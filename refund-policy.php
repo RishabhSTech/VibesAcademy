@@ -37,26 +37,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>&nbsp;</p>
 <p>Effective Date: <strong>20th February 2024</strong></p>
 <p>Thank you for choosing The Vibes Academy! Before making a purchase, please take a moment to review our Returns and Refunds Policy to ensure a clear understanding of your rights and responsibilities.</p>
-<p>&nbsp;</p>
-<p><strong>No Returns</strong></p>
-<p>At The Vibes Academy, we strive to provide top-notch products and services to our customers. To maintain the quality and integrity of our offerings, we do not accept returns on any products. Once a purchase is made, it is considered final, and no returns will be accepted.</p>
-<p>&nbsp;</p>
-<p><strong>No Refunds</strong></p>
-<p>We are committed to your satisfaction and stand behind the value of our products and services. However, we do not offer refunds under any circumstances. Whether it's a course enrollment, or any other transaction, all sales are final.</p>
-<p>&nbsp;</p>
-<p><strong>Cancellations</strong></p>
-<p>Once you place an order with The Vibes Academy, it enters our system for processing immediately. As a result, orders cannot be cancelled or modified once they are confirmed. We kindly ask you to review your order carefully before completing your purchase to ensure accuracy.</p>
-<p><br /><strong>Exceptions</strong></p>
-<p>While our general policy is strict regarding returns and refunds, we understand that there may be exceptional circumstances where our customers are unable to access the services. In such cases, we will assess these requests on a case-by-case basis. Please reach out to our customer service team at hello@thevibes.academy to discuss any specific instances where you believe an exception may apply.</p>
-<p>&nbsp;</p>
-<p><strong>Contact Us</strong></p>
-<p>&nbsp;If you have any questions or concerns regarding our Returns and Refunds Policy, our dedicated customer service team is here to assist you. Please don't hesitate to reach out to us at hello@thevibes.academy, and we'll be happy to address any inquiries you may have.</p>
-<p>&nbsp;</p>
-<p><strong>Policy Changes</strong></p>
-<p>Please note that we reserve the right to update or modify this Returns and Refunds Policy at any time. Any changes will be promptly communicated and posted on this page to ensure transparency and clarity for our customers. By making a purchase from The Vibes Academy, you acknowledge and agree to abide by our Returns and Refunds Policy.</p>
-<p>&nbsp;Thank you for your understanding and cooperation. We appreciate your support as we continue to deliver exceptional learning experiences and services at The Vibes Academy.</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>At The Vibes Academy, we are committed to delivering high-quality learning experiences. While we offer a 100% Money-Back Guarantee, refunds are granted on a case-by-case basis, subject to the following eligibility criteria:</p>
+    
+    <ul style="margin-left: 30px; line-height: 30px;">
+      <li><strong>Full Participation:</strong> You must have completed all video modules included in the course.</li>
+      <li><strong>Assignment Completion:</strong> All required assignments and coursework must be submitted in full.</li>
+      <li><strong>Written Feedback:</strong> You must email us at <a href="mailto:hello@thevibes.academy">hello@thevibes.academy</a> within 7 days of course completion, clearly outlining why the course did not meet your expectations or helped you achieve your goals.</li>
+    </ul>
+    
+    <p>Refund requests that do not meet the above conditions will not be eligible for consideration.</p>
+    
+    <p>We encourage students to take full advantage of the course materials before making a request. Our team carefully reviews each refund application to ensure fairness and continued quality for all learners.</p>
 		</div>
 	</div>
 
