@@ -15,6 +15,7 @@ if(!isset($_SESSION['utm_source'])){
 	$_SESSION['utm_content'] = $utm_content;
 }
 
+/* 
 function getNextBatchWhatsAppGroup() {
     $dbConnect = new mysqli('localhost', 'mba', 'mba@123', 'mba');
     $currentDate = date('Y-m-d');
@@ -39,6 +40,7 @@ if ($nextBatch) {
 } else {
     echo "No upcoming batches found.";
 }
+*/
 
 
 ?>
@@ -552,34 +554,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                <div class="s2">Enroll Now</div>
            </div>
             <!--form action="https://www.thevibes.academy/form_process.php" id="EnrollNow" method="post"-->
-            <form action="https://www.thevibes.academy/paynow.php" id="EnrollNow" method="post">
+            <form action="https://www.thevibes.academy/paynow.php" id="EnrollNow" method="post" autocomplete="off">
                 <div class="form__group field">
                     <label for="CusName" pattern="[a-zA-Z]*" class="form__label">Name *</label>
-                    <input type="input" class="form__field" placeholder="" name="CusName" id="CusName" required="" wfd-id="id0">
+                    <input type="input" class="form__field" placeholder="" name="CusName" id="CusName" required="" wfd-id="id0" autocomplete="off">
                 </div>
                 <div class="form__group field">
                     <label for="CusEmail" class="form__label">Email Address *</label>
-                    <input type="email" class="form__field" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,10}" placeholder="" name="CusEmail" id="CusEmail" required="" wfd-id="id1">
+                    <input type="email" class="form__field" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,10}" placeholder="" name="CusEmail" id="CusEmail" required="" wfd-id="id1" autocomplete="off">
                 </div>
                 <div class="form__group field">
                     <label for="CusTel" class="form__label">Mobile Number *</label>
-                    <input type="tel" class="form__field numberonly CusTel" maxlength="10" minlength="10" placeholder="" name="CusTel" id="CusTel" required="" wfd-id="id2">
+                    <input type="tel" class="form__field numberonly CusTel" maxlength="10" minlength="10" placeholder="" name="CusTel" id="CusTel" required="" wfd-id="id2" autocomplete="off">
                    <p id="error" style="color:red;"></p>
                 </div>
                 <div class="form-group">
-                    <input type="hidden" name="track_form" value="enroll-i-mba-online index english" wfd-id="id3">
+                    <input type="hidden" name="track_form" value="enroll-i-mba-online index english" wfd-id="id3" autocomplete="off">
                     <span class="success_msg" style="display:none">🎉 You are already enrolled in our i-MBA
                         course.</span>
                     <button class="btn-submit btnClickLog" type="submit">Pay Now and Start</button>
-                </div>
-                <div class="form-group">
-                   <p class="BoxForBatch"> 🎉 Batch starts on <?php echo $formattedDate;?> 🚀</p>
                 </div>
             </form>
         </div>
     </div>
     
-    <form action="https://www.thevibes.academy/pay-online.php" id="payagain" method="post">
+    <form action="https://www.thevibes.academy/paynow.php" id="payagain" method="post">
         <input type = "hidden" name="payagain" id="pay_id">
         <input type="hidden" name="track_form" value="become-an-insta-influencer-within-a-week">
     </form>   
@@ -689,92 +688,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             $("body").removeClass("overhidden");
         });
     });
-</script>
-<script>
-$(document).ready(function(){
-    $('#CusTel').on('input', function(){ // Trigger AJAX call on input change
-        var mobileNumber = $(this).val(); // Get mobile number from input field
-        
-        if (mobileNumber.length < 10) { 
-            return;
-        }
-        $.ajax({
-            type: 'POST',
-            url: 'https://www.thevibes.academy/mobilenumberchk.php', // PHP script to handle AJAX request
-            data: {mobileNumber: mobileNumber}, // Send mobile number to PHP script
-            success: function(response){
-                if(response == 'exists'){
-                    $('#error').text('Mobile number already exists!');
-                } else {
-                    $('#error').text(''); // Clear any previous error messages
-                }
-            }
-        });
-    });
-
-    /*
-    // Handle form submission
-    $('#EnrollNow').submit(function(event){
-        event.preventDefault();
-        var mobileNumber = $('#CusTel').val(); // Get mobile number from input field
-        
-        $('.btn-submit').prop('disabled', true);
-        $.ajax({
-            type: 'POST',
-            url: 'https://www.thevibes.academy/mobilenumberchk.php', // PHP script to handle AJAX request
-            data: {mobileNumber: mobileNumber}, // Send mobile number to PHP script
-            success: function(response){
-                if(response == 'exists'){
-                    $('#error').text('Mobile number already exists!');
-                    //event.preventDefault(); // Prevent form submission if mobile number already exists
-                    $('.btn-submit').prop('disabled', false);
-                } else {
-                    // If mobile number doesn't exist, you can submit the form
-                    $('.btn-submit').prop('disabled', true);
-                    $('#EnrollNow').unbind('submit').submit();
-                }
-            }
-        });
-    });
-    */
-    
-    $('#EnrollNow').submit(function(event) {
-        event.preventDefault();
-        var mobileNumber = $('#CusTel').val();
-        $('.btn-submit').prop('disabled', true);
-        $.ajax({
-            type: 'POST',
-            url: 'https://www.thevibes.academy/mobilenumberchk-payment.php',
-            data: {
-                mobileNumber: mobileNumber
-            },
-            success: function(response) {
-                if (response != 'not_exists') {
-
-                    if (response == 'pay_success') {
-                        $('.success_msg').show();
-                        return;
-                    } else {
-                        $('#pay_id').val(response);
-                        $("#payagain").submit();
-                    }
-
-                    //$('#pay_id').val(response);
-                    //$("#payagain").submit();
-
-                    //$('#error').text('Mobile number already exists!');
-                    $('.btn-submit').prop('disabled', false);
-                } else {
-
-                    $('.success_msg').hide();
-
-                    $('.btn-submit').prop('disabled', true);
-                    $('#EnrollNow').unbind('submit').submit();
-                }
-            }
-        });
-    });
-});
 </script>
 
 </html>
