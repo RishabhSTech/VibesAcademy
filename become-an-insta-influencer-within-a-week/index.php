@@ -103,11 +103,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="row">
                 <div class="col">
                     <h1 class="MainBannerHeading formobile">Become an <br> insta-influencer <br>within a week.</h1>
-                     <h1 class="MainBannerHeading fordesktop">Become an insta-influencer within a week.</h1>
+                     <h1 class="MainBannerHeading fordesktop">Become an insta-influencer within a week</h1>
                     <p class="SmallBannerHeading">Want to Go Viral and Become a 100k-Follower Instagram Influencer 😍
                     </p>
                     <div class="ButtonGroup">
-                        <a href="javascript:;" class="EnrollNow btnPopOpen">Enroll Now</a>
+                        <a href="javascript:;" class="EnrollNow btnPopOpen">Enroll Once. Access Forever</a>
                     </div>
 
                 </div>
@@ -126,25 +126,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <section class="CouresInfo" id="CouresInfo">
         <div class="container">
-          <div class="CouresHighlights formobile">ONLY @499 ❌ No Ads ❌ No Equipments <br> ❌No Team ❌ No Fake Followers</div>
-   <div class="CouresHighlights fordesktop">ONLY @499 ❌ No Ads ❌ No Equipments ❌ No Team ❌ No Fake Followers</div>
+          <div class="CouresHighlights formobile">✅ ONLY ₹499 ❌ No Ads ❌ No Equipments <br> ❌No Team ❌ No Fake Followers <br>✅ Lifetime Access</div>
+   <div class="CouresHighlights fordesktop">✅ ONLY ₹499 ❌ No Ads ❌ No Equipments ❌ No Team ❌ No Fake Followers ✅ Lifetime Access</div>
 
             <ul class="CouresInfos">
                 <li class="IconCoures-1">
                     <div class="InnerIcons">
-                        <div class="MainHeadingIcons">1500+</div>
+                        <div class="MainHeadingIcons">2,000+</div>
                         <div class="MiniHeading">Students Attended</div>
                     </div>
                 </li>
                 <li class="IconCoures-2">
                     <div class="InnerIcons">
                         <div class="MainHeadingIcons">2K+</div>
-                        <div class="MiniHeading">Video Produceds</div>
+                        <div class="MiniHeading">Video Produced</div>
                     </div>
                 </li>
                 <li class="IconCoures-3">
                     <div class="InnerIcons">
-                        <div class="MainHeadingIcons">300+</div>
+                        <div class="MainHeadingIcons">200+</div>
                         <div class="MiniHeading">Minutes</div>
                     </div>
                 </li>
@@ -162,7 +162,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <section class="Community" id="OurCommunityStats">
         <div class="container">
             <div class="MainHeading">Our Community Stats</div>
-            <div class="SmallHeading">Join a thriving community of over 1,500 successful influencers. Our graduates experience an average follower growth of 180%, turning their Instagram profiles into powerful platforms.
+            <div class="SmallHeading">Join a thriving community of over 2,000 successful influencers. Our graduates experience an average follower growth of 180%, turning their Instagram profiles into powerful platforms.
             </div>
 
             <img src="images/peoples.png" alt="community">
@@ -324,7 +324,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         </div>
                         <div class="coachName">Anupriya Khare</div>
                         <div class="coachRole">Course Designer</div>
-                        <div class="coachEdu">Phd in English, IGNOU</div>
+                        <div class="coachEdu">Purusing Phd from IGNOU</div>
                     </div>
                 </li>
             </ul>
@@ -481,7 +481,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         </div>
                         <div class="FaqsText">
                             <div class="faqsHeading"> What prerequisites are needed to start the course or complete assignments?</div>
-                            <div class="faqsTextinn">All you need is an Android phone, internet access, and a keen interest in the course content.</div>
+                            <div class="faqsTextinn">Currently, an iPhone version of the app is not available, so the app works only on Android phones.</div>
                         </div>
                     </div>
                 </li>
@@ -531,9 +531,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <p>An initiative by <span>Thinquilab Private Limited</span> </p>
                 </div>
                 <div class="fcol textright">
-                     <a class="linksfooterii" href="https://www.thevibes.academy/terms-and-conditions.php" target="_blank">Terms & Conditions </a>
-                    <a class="linksfooterii" href="https://www.thevibes.academy/privacy-policy.php" target="_blank">Privacy Policy </a>
-                    <a class="linksfooterii" href="https://www.thevibes.academy/refund-policy.php" target="_blank"> Refund Policy</a>
+                     <a class="linksfooterii" href="https://www.vibesacademy.shrijantech.com/terms-and-conditions.php" target="_blank">Terms & Conditions </a>
+                    <a class="linksfooterii" href="https://www.vibesacademy.shrijantech.com/privacy-policy.php" target="_blank">Privacy Policy </a>
+                    <a class="linksfooterii" href="https://www.vibesacademy.shrijantech.com/refund-policy.php" target="_blank"> Refund Policy</a>
                    
                 </div>
                 <div class="fcol textright1">
@@ -578,7 +578,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
     </div>
     
-    <form action="https://www.thevibes.academy/paynow.php" id="payagain" method="post">
+    <form action="https://www.thevibes.academy/pay-online.php" id="payagain" method="post">
         <input type = "hidden" name="payagain" id="pay_id">
         <input type="hidden" name="track_form" value="become-an-insta-influencer-within-a-week">
     </form>   
@@ -689,5 +689,4 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         });
     });
 </script>
-
 </html>
