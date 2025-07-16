@@ -531,9 +531,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <p>An initiative by <span>Thinquilab Private Limited</span> </p>
                 </div>
                 <div class="fcol textright">
-                     <a class="linksfooterii" href="https://www.vibesacademy.shrijantech.com/terms-and-conditions.php" target="_blank">Terms & Conditions </a>
-                    <a class="linksfooterii" href="https://www.vibesacademy.shrijantech.com/privacy-policy.php" target="_blank">Privacy Policy </a>
-                    <a class="linksfooterii" href="https://www.vibesacademy.shrijantech.com/refund-policy.php" target="_blank"> Refund Policy</a>
+                     <a class="linksfooterii" href="https://www.thevibes.academy/terms-and-conditions.php" target="_blank">Terms & Conditions </a>
+                    <a class="linksfooterii" href="https://www.thevibes.academy/privacy-policy.php" target="_blank">Privacy Policy </a>
+                    <a class="linksfooterii" href="https://www.thevibes.academy/refund-policy.php" target="_blank"> Refund Policy</a>
                    
                 </div>
                 <div class="fcol textright1">
@@ -578,7 +578,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
     </div>
     
-    <form action="https://www.thevibes.academy/pay-online.php" id="payagain" method="post">
+    <form action="https://www.thevibes.academy/paynow.php" id="payagain" method="post">
         <input type = "hidden" name="payagain" id="pay_id">
         <input type="hidden" name="track_form" value="become-an-insta-influencer-within-a-week">
     </form>   
